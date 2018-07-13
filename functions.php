@@ -1,4 +1,3 @@
-
 <?php
 /**
  * amp_reviews functions and definitions

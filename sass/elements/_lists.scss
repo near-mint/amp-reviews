@@ -1,9 +1,9 @@
 ul, ol {
-	margin: 0 0 1.5em 3em;
+	margin: 0;
 }
 
 ul {
-	list-style: disc;
+	list-style: square;
 }
 
 ol {
@@ -13,7 +13,8 @@ ol {
 li > ul,
 li > ol {
 	margin-bottom: 0;
-	margin-left: 1.5em;
+	margin-left: 0;
+	padding-left: 10px;
 }
 
 dt {
