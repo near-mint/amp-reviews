@@ -541,6 +541,10 @@ table {
 	background-color: #808080;
 }
 
+.site-title, .site-description {
+	display: none;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -655,6 +659,16 @@ a:hover, a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+.menu-toggle {
+	border: none;
+	background: none;
+}
+
+.menu-toggle:active {
+	border: none;
+	background: none;
+}
+
 .main-navigation {
 	clear: both;
 	display: block;
@@ -693,6 +707,7 @@ a:hover, a:active {
 .main-navigation ul ul li:hover > ul,
 .main-navigation ul ul li.focus > ul {
 	left: 100%;
+	padding: 8px;
 }
 
 .main-navigation ul ul li:focus-within > ul {

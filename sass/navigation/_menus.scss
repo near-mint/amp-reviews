@@ -1,3 +1,12 @@
+.menu-toggle {
+	border: none;
+	background: none;
+	&:active {
+		border: none;
+		background: none;	
+	}
+}
+
 .main-navigation {
 	clear: both;
 	display: block;
@@ -28,6 +37,7 @@
 				&:hover > ul,
 				&.focus > ul {
 					left: 100%;
+					padding: 8px;
 				}
 
 				/* The :focus-within is for non-JS contexts and AMP (all browsers except IE/Edge support) */
