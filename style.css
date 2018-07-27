@@ -385,7 +385,7 @@ input,
 select,
 optgroup,
 textarea {
-	color: #404040;
+	color: #383838;
 	font-family: sans-serif;
 	font-size: 16px;
 	font-size: 1rem;
@@ -411,6 +411,10 @@ dfn, cite, em, i {
 
 blockquote {
 	margin: 0 1.5em;
+	border-left: #F5B854 solid 2px;
+	padding-left: 10px;
+	font-style: italic;
+	color: #4d4d4d;
 }
 
 address {
@@ -527,22 +531,24 @@ table {
 .site-info {
 	float: right;
 	color: #fff;
+	padding: 10px;
 }
 
 .site-info a {
-	color: #dfb059;
+	color: #fff;
 }
 
 .site-info a:visited {
-	color: #f0bfff;
+	color: #fff;
 }
 
 .site-footer {
-	background-color: #808080;
+	background-color: #383838;
 }
 
 .site-title, .site-description {
 	display: none;
+	justify-content: space-evenly;
 }
 
 /*--------------------------------------------------------------
@@ -636,16 +642,16 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: #0D76D9;
 	text-decoration: none;
 }
 
 a:visited {
-	color: purple;
+	color: #BC1CF2;
 }
 
 a:hover, a:focus, a:active {
-	color: midnightblue;
+	color: #0B64B7;
 }
 
 a:focus {
@@ -654,6 +660,16 @@ a:focus {
 
 a:hover, a:active {
 	outline: 0;
+	text-decoration: underline;
+}
+
+/* 
+
+Certain links (like navigation and tags) should never have the visited link state because they link to dynamic content.
+
+*/
+.cat-links a:visited, .entry-title a:visited, .entry-meta a:visited, .entry-footer a:visited {
+	color: #0D76D9;
 }
 
 /*--------------------------------------------------------------
@@ -662,6 +678,9 @@ a:hover, a:active {
 .menu-toggle {
 	border: none;
 	background: none;
+	padding: 0 10px;
+	margin: 0;
+	position: absolute;
 }
 
 .menu-toggle:active {
@@ -669,18 +688,25 @@ a:hover, a:active {
 	background: none;
 }
 
+.menu-toggle:focus {
+	border: none;
+	background: none;
+}
+
 .main-navigation {
 	clear: both;
-	display: block;
 	float: left;
+	text-align: center;
 	width: 100%;
+	background-color: #383838;
 }
 
 .main-navigation ul {
 	display: none;
 	list-style: none;
-	margin: 0;
-	padding-left: 0;
+	margin: 0 auto;
+	padding-left: 10px;
+	width: 500px;
 	/* The focus class is added by navigation.js */
 	/* The :focus-within is for non-JS contexts and AMP (all browsers except IE/Edge support) */
 }
@@ -715,7 +741,12 @@ a:hover, a:active {
 }
 
 .main-navigation ul ul a {
-	width: 200px;
+	width: 44px;
+}
+
+.main-navigation ul ul :hover > a,
+.main-navigation ul ul .focus > a {
+	color: #fff;
 }
 
 .main-navigation ul li:hover > ul,
@@ -734,8 +765,12 @@ a:hover, a:active {
 }
 
 .main-navigation a {
-	display: block;
+	display: inline;
 	text-decoration: none;
+	color: #fff;
+	font-family: "Yanone Kaffeesatz";
+	margin-right: 20px;
+	font-size: 24px;
 }
 
 /* Small menu. */
@@ -750,6 +785,8 @@ a:hover, a:active {
 	}
 	.main-navigation ul {
 		display: block;
+		width: 500px;
+		padding-left: 0;
 	}
 }
 
@@ -773,6 +810,58 @@ a:hover, a:active {
 	float: right;
 	text-align: right;
 	width: 50%;
+}
+
+.comments-link::before {
+	margin-left: 5px;
+	content: "| ";
+}
+
+.svg-menu-toggle {
+	fill: #ffffff;
+	pointer-events: all;
+	cursor: pointer;
+}
+
+.svg-menu-toggle .bar {
+	-webkit-transform: rotate(0) translateY(0) translateX(0);
+	transform: rotate(0) translateY(0) translateX(0);
+	opacity: 1;
+	-webkit-transform-origin: 20px 10px;
+	transform-origin: 20px 10px;
+	-webkit-transition: -webkit-transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+	transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.svg-menu-toggle .bar:nth-of-type(1) {
+	-webkit-transform-origin: 20px 10px;
+	transform-origin: 20px 10px;
+}
+
+.svg-menu-toggle .bar:nth-of-type(3) {
+	-webkit-transform-origin: 20px 20px;
+	transform-origin: 20px 20px;
+}
+
+.main-navigation.toggled .svg-menu-toggle .bar:nth-of-type(1) {
+	-webkit-transform: rotate(-45deg) translateY(0) translateX(0);
+	transform: rotate(-45deg) translateY(0) translateX(0);
+}
+
+.main-navigation.toggled .svg-menu-toggle .bar:nth-of-type(2) {
+	opacity: 0;
+}
+
+.main-navigation.toggled .svg-menu-toggle .bar:nth-of-type(3) {
+	-webkit-transform: rotate(45deg) translateY(0em) translateX(0em);
+	transform: rotate(45deg) translateY(0em) translateX(0em);
+}
+
+.inline-svg {
+	display: block;
+	margin: 0 auto;
+	width: 44px;
+	height: 44px;
 }
 
 /*--------------------------------------------------------------
@@ -1058,6 +1147,7 @@ object {
 .site-content .widget-area {
 	margin: 0 auto;
 	width: 400px;
+	padding: 0 10px;
 }
 
 @media screen and (max-width: 500px) {
@@ -1086,4 +1176,53 @@ object {
 
 .no-sidebar .site-main {
 	margin-right: 0;
+}
+
+.site-content .widget-area {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	background-color: #383838;
+	color: #fff;
+	width: 100%;
+	padding-top: 50px;
+}
+
+.site-content .widget-area a {
+	color: #54a7f5;
+}
+
+.site-content .widget-area a:visited {
+	color: #54a7f5;
+}
+
+.site-content .widget-area .widget {
+	padding: 0;
+}
+
+.site-content .widget-area .widget_meta {
+	display: none;
+}
+
+.site-content .widget-area .widget_search {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.site-content .widget-area .widget_search .search-field {
+	width: 60%;
+}
+
+@media screen and (min-width: 900px) {
+	.site-content .widget-area {
+		flex-wrap: nowrap;
+		justify-content: space-around;
+	}
+	.site-content .widget-area .widget_search .search-field {
+		width: 40%;
+	}
 }

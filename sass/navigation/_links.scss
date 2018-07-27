@@ -16,5 +16,19 @@ a {
 	&:hover,
 	&:active {
 		outline: 0;
+		text-decoration: underline;
 	}
 }
+
+/* 
+
+Certain links (like navigation and tags) should never have the visited link state because they link to dynamic content.
+
+*/
+
+.cat-links a, .entry-title a, .entry-meta a, .entry-footer a {
+	&:visited {
+		color: $color__link;
+	}
+}
+

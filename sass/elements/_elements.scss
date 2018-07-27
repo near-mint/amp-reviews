@@ -40,19 +40,21 @@ figure {
 .site-info {
 	float: right;
 	color: #fff;
+	padding: 10px;
 }
 
 .site-info a {
-	color: rgb(223, 176, 89);
+	color: #fff;
 	&:visited {
-		color: #f0bfff;
+		color: #fff;
 	}
 }
 
 .site-footer {
-	background-color: #808080;
+	background-color: $color__text-main;
 }
 
 .site-title, .site-description {
 	display: none;
+	justify-content: space-evenly;
 }

@@ -1,23 +1,32 @@
 .menu-toggle {
 	border: none;
 	background: none;
+	padding: 0 10px;
+	margin: 0;
+	position: absolute;
 	&:active {
 		border: none;
 		background: none;	
+	}
+	&:focus {
+		border: none;
+		background: none;
 	}
 }
 
 .main-navigation {
 	clear: both;
-	display: block;
 	float: left;
+	text-align: center;
 	width: 100%;
+	background-color: $color__text-main;
 
 	ul {
 		display: none;
 		list-style: none;
-		margin: 0;
-		padding-left: 0;
+		margin: 0 auto;
+		padding-left: 10px;
+		width: 500px;
 
 		ul {
 			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -47,11 +56,13 @@
 			}
 
 			a {
-				width: 200px;
+				width: 44px;
 			}
 
 			:hover > a,
 			.focus > a {
+				color: #fff;
+
 			}
 
 			a:hover,
@@ -82,8 +93,13 @@
 	}
 
 	a {
-		display: block;
+		display: inline;
 		text-decoration: none;
+		color: #fff;
+		font-family: $font__brand;
+		margin-right: 20px;
+		font-size: 24px;
+
 	}
 
 	.current_page_item > a,
@@ -105,6 +121,8 @@
 	}
 	.main-navigation ul {
 		display: block;
+		width: 500px;
+		padding-left: 0;
 	}
 }
 
@@ -127,4 +145,73 @@
 		text-align: right;
 		width: 50%;
 	}
+}
+
+.comments-link::before {
+	margin-left: 5px;
+	content: "| ";
+}
+
+
+.svg-menu-toggle {
+	fill: #ffffff;
+	pointer-events:all; //needs to be there so the hover works
+	cursor:pointer;
+
+	.bar {
+
+		-webkit-transform:rotate(0) translateY(0) translateX(0);
+		transform:rotate(0) translateY(0) translateX(0);
+		opacity:1;
+
+
+		-webkit-transform-origin: 20px 10px;
+		transform-origin: 20px 10px;
+
+		-webkit-transition: -webkit-transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+		transition: transform 0.4s ease-in-out, opacity 0.2s ease-in-out;
+
+	}
+	.bar:nth-of-type(1) {
+	-webkit-transform-origin: 20px 10px;
+		transform-origin: 20px 10px;
+
+	}
+	.bar:nth-of-type(3) {
+	-webkit-transform-origin: 20px 20px;
+		transform-origin: 20px 20px;
+	}
+}
+
+.main-navigation.toggled .svg-menu-toggle {
+
+
+	.bar:nth-of-type(1) {
+
+		
+		-webkit-transform:rotate(-45deg) translateY(0) translateX(0);
+		transform:rotate(-45deg) translateY(0) translateX(0);
+
+	}
+
+	.bar:nth-of-type(2) {
+
+		opacity:0;
+
+	}
+
+	.bar:nth-of-type(3) {
+
+		
+		-webkit-transform:rotate(45deg) translateY(0em) translateX(0em);
+		transform:rotate(45deg) translateY(0em) translateX(0em);
+
+	}
+}
+
+.inline-svg {
+	display:block;
+	margin:0 auto;
+	width: 44px;
+	height:44px;
 }

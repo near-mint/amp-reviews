@@ -9,3 +9,57 @@
 		margin-right: 0;
 	}
 }
+
+.site-content .widget-area {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	background-color: $color__text-main;
+	color: #fff;
+	width: 100%;
+	padding-top: 50px;
+
+	a {
+		color: $color__accent-triad1;
+	}
+
+	a:visited {
+		color: $color__accent-triad1;
+	}
+
+	.widget {
+		padding: 0;
+	}
+
+	.widget_meta {
+		display: none;
+	}
+
+	.widget_search {
+		position: absolute;
+		top: 20px;
+		left:0;
+		width: 100%;
+		text-align: center;
+		.search-field {
+			width: 60%;
+		}
+	}
+
+}
+
+
+@media screen and (min-width: 900px) {
+	
+	.site-content .widget-area {
+		flex-wrap: nowrap;
+		justify-content: space-around;
+		.widget_search {
+			.search-field {
+				width: 40%;
+			}
+		}
+	}
+
+}
