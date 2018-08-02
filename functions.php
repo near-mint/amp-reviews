@@ -184,6 +184,83 @@ function amp_reviews_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'amp_reviews_scripts' );
 
+
+/*
+ * Add Custom post types
+ */
+function amp_reviews_custom_post_types() {
+
+	// Here we go, this is the only thing you need to modify to registers your CPTs:
+	// write inside this array ($types) an array for each CPT you want
+	// (and if you need only one CPT simply let one array)
+	$types = array(
+  
+	  // Books
+	  array('type'          => 'review',
+			'typePlural'    => 'reviews',
+			'labelSingle'   => 'Review',
+			'labelPlural'   => 'Reviews'
+		),
+  
+	);
+  
+	// This foreach loops the $types array and creates labels and arguments for each CPTs
+	foreach ($types as $type) {
+  
+	  $typeSingle = $type['type'];
+	  $typePlural = $type['typePlural'];
+	  $labelSingle = $type['labelSingle'];
+	  $labelPlural = $type['labelPlural'];
+  
+	  // Labels: here you can translate the strings in your language.
+	  // These strings will be displayed in the admin panel
+	  $labels = array(
+		'name'               => _x( $labelPlural, ' post type general name' ),
+		'singular_name'      => _x( $labelSingle, ' post type singular name' ),
+		'add_new'            => _x( 'Add new ', $labelSingle ),
+		'add_new_item'       => __( 'Add new '. $labelSingle ),
+		'edit_item'          => __( 'Edit '. $labelSingle ),
+		'new_item'           => __( 'New '. $labelSingle ),
+		'all_items'          => __( 'All '. $labelPlural ),
+		'view_item'          => __( 'View '. $labelSingle ),
+		'search_items'       => __( 'Search '. $labelPlural ),
+		'not_found'          => __( 'No '. $labelSingle .' found' ),
+		'not_found_in_trash' => __( 'No '. $labelSingle .' found in trash' ),
+		'parent_item_colon'  => '',
+		'menu_name'          => __( $labelPlural ),
+	  );
+  
+	  // Arguments (some settings, to learn more see WordPress docs)
+	  $args = array(
+		'labels'        => $labels,
+		'description'   => 'Individual reviews of things',
+		'public'        => true,
+		'supports'      => array( 'title', 'author', 'editor', 'thumbnail', 'excerpt', 'comments', 'page-attributes', 'custom-fields' ),
+		'has_archive'   => false,
+		'menu_position' => 5,
+		'rewrite'       => true, // default
+		'menu_icon'     => 'dashicons-randomize'//get_template_directory_uri().'/assets/img/cpt-'.$typeSingle.'.png'
+	  );
+  
+	  // Finally, we can registers the post types
+	  register_post_type( $typeSingle, $args );
+  
+	} // end foreach
+  
+  }
+  add_action( 'init', 'amp_reviews_custom_post_types' );
+
+// Show posts of 'post', 'page', 'review' post types on home page
+function search_filter( $query ) {
+	if ( !is_admin() && $query->is_main_query() ) {
+	  if ( $query->is_search ) {
+		$query->set( 'post_type', array( 'post', 'page', 'review' ) );
+	  }
+	}
+  }
+   
+  add_action( 'pre_get_posts','search_filter' );
+
 /**
  * Implement the Custom Header feature.
  */

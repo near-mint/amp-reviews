@@ -58,3 +58,31 @@ figure {
 	display: none;
 	justify-content: space-evenly;
 }
+
+.checked {
+	color: $color__accent-brand;
+}
+
+.ratingRubric {
+	width: 50%;
+	display: inline-block;
+}
+
+.ratingValue {
+	width: 50%;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+@media screen and (min-width: $break-small) {
+
+	.ratingRubric {
+		width: 30%;
+	}
+	
+	.ratingValue {
+		width: 70%;
+	}
+
+}

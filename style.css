@@ -551,6 +551,31 @@ table {
 	justify-content: space-evenly;
 }
 
+.checked {
+	color: #F5B854;
+}
+
+.ratingRubric {
+	width: 50%;
+	display: inline-block;
+}
+
+.ratingValue {
+	width: 50%;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+
+@media screen and (min-width: 500px) {
+	.ratingRubric {
+		width: 30%;
+	}
+	.ratingValue {
+		width: 70%;
+	}
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
