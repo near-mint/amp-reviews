@@ -32,44 +32,8 @@
 	<div class="ratings">
 		<?php 
 
-			//TODO: get rubric from something dynamic
-
-			$rubric = ['Cheesiness','Heat','Flavor','Viscosity','Chips'];
-
-			function starsHtml($rating) {
-				//TODO: Check a11y
-
-				$html = '';
-
-				for ($n = 1; $n <= 5; $n++) {
-					if ($n <= $rating) {
-						$html .= '<span class="fa fa-star checked"></span>';
-					}
-					else {
-						$html .= '<span class="fa fa-star"></span>';
-					}
-				}
-
-				return $html;
-			}
-			
-			//TODO: Remove dependency on Font Awesome... local SVGs... maybe of chips!
-
-			$html = '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">'
-				. '<dl>';
-
-			for($x = 0; $x < count($rubric); $x++) {
-				$html .= ''
-					. '<dt class="ratingRubric">' . $rubric[$x] . '</dt>'
-					. '<dd class="ratingValue">' . starsHtml(get_post_custom_values($rubric[$x])[0]) . '</dd>';
-			}
-			
-			$html .= '</dl>';
-
-			//TODO: Wrap this whole thing in a conditional
-
 			if (in_category('review')) {
-				echo $html;
+				print getRatings();
 			}
 
 		?>
