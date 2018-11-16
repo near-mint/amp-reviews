@@ -34,7 +34,7 @@
 
 			//TODO: get rubric from something dynamic
 
-			$rubric = ['Value','Cheesiness','Heat'];
+			$rubric = ['Cheesiness','Heat','Flavor','Viscosity','Chips'];
 
 			function starsHtml($rating) {
 				//TODO: Check a11y
